@@ -70,7 +70,7 @@
     .counter {font-size:12px;color:#ecdccc;letter-spacing:.14em;font-variant-numeric:tabular-nums;white-space:nowrap}
     .counter span {color:rgba(236,220,204,.55)}
     .progress { width:108px; height:1px; background:rgba(235,211,185,.3); overflow:hidden; }
-    .progress span {height:100%;display:block;width:11.111%;background:#ebceab;transition:transform .5s var(--ease);transform-origin:left}
+    .progress span {height:100%;display:block;width:16.666%;background:#ebceab;transition:transform .5s var(--ease);transform-origin:left}
 
     /* 04 — Convites autorais feitos com texto real e CSS */
     .paper { position:absolute; inset:0; overflow:hidden; color:var(--ink,#414332); background:var(--paper,#faf7ef); border-radius:4px; text-align:center; container-type:inline-size; box-shadow:inset 0 0 0 .5px rgba(38,24,15,.08); }
@@ -297,7 +297,7 @@
     </section>
     <footer class="foot">
       <div class="foot__info"><div class="foot__name" id="styleName" aria-live="polite"></div><div class="foot__hint" id="hint">Clique para visualizar os detalhes</div></div>
-      <div class="foot__right"><div class="progress" aria-hidden="true"><span id="progressBar"></span></div><div class="counter"><strong id="currentIndex">01</strong> <span>/</span> <span id="totalCards">09</span></div></div>
+      <div class="foot__right"><div class="progress" aria-hidden="true"><span id="progressBar"></span></div><div class="counter"><strong id="currentIndex">01</strong> <span>/</span> <span id="totalCards">06</span></div></div>
     </footer>
   </main>
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Convite ampliado" aria-hidden="true">
@@ -331,18 +331,8 @@
     const modernArc = `<svg class="modern-symbol" viewBox="0 0 220 300" fill="none" aria-hidden="true"><path d="M8 290V130a101 101 0 0 1 202 0v160" stroke="#9a7e6b" stroke-width="1.2"/><path d="M39 289V130a70 70 0 0 1 140 0v159" stroke="#9a7e6b" stroke-width=".7"/><circle cx="109" cy="155" r="6" fill="#a48a6a"/></svg>`;
     const envelopeBotanicals = `<svg class="envelope-flowers" viewBox="0 0 260 320" fill="none" aria-hidden="true"><g stroke="#7b7d62" stroke-width="2"><path d="M133 275C129 204 124 141 104 21M131 263c23-95 47-135 91-196M120 199C88 177 61 155 20 132"/></g><g fill="#b7bda3"><ellipse cx="92" cy="98" rx="13" ry="29" transform="rotate(-37 92 98)"/><ellipse cx="149" cy="125" rx="12" ry="30" transform="rotate(37 149 125)"/><ellipse cx="63" cy="159" rx="12" ry="25" transform="rotate(-47 63 159)"/><ellipse cx="183" cy="101" rx="12" ry="27" transform="rotate(43 183 101)"/></g><g fill="#e5c792" stroke="#d2b47b"><ellipse cx="109" cy="39" rx="18" ry="25"/><ellipse cx="84" cy="47" rx="18" ry="24" transform="rotate(-55 84 47)"/><ellipse cx="132" cy="46" rx="18" ry="24" transform="rotate(55 132 46)"/><ellipse cx="104" cy="68" rx="17" ry="24" transform="rotate(180 104 68)"/></g><circle cx="106" cy="50" r="7" fill="#b3864f"/><g fill="#b99579"><circle cx="213" cy="66" r="12"/><circle cx="199" cy="56" r="8"/><circle cx="231" cy="56" r="8"/><circle cx="34" cy="132" r="10"/><circle cx="20" cy="117" r="7"/></g></svg>`;
 
-    /* 08 — Nove estilos: seis modelos HTML/CSS e três convites ilustrados com abertura animada. */
+    /* 08 — Seis estilos: três modelos HTML/CSS e três convites ilustrados com abertura animada. */
     const invites = [
-      {
-        name:'Jardim de Oliveiras', type:'paper--garden', hint:'Clique para visualizar os detalhes',
-        html: `<div class="paper paper--garden">
-          <div class="garden-branch-a">${leafSprig('#7d916d','#f0efe1')}</div><div class="garden-branch-b">${leafSprig('#879579','#e9e8d6')}</div>
-          <div class="paper__content"><div class="eyebrow garden-top">Com a alegria de nossas famílias</div>
-          <div class="serif italic garden-name">Helena</div><div class="serif garden-amp">&amp;</div><div class="serif italic garden-name second">Arthur</div>
-          <div class="line garden-rule"></div><div class="eyebrow">Convidam para o seu casamento</div>
-          <div class="garden-date">18 · 04 · 2027</div><div class="data-label garden-place">ÀS 16 HORAS<br>CASA DO JARDIM · SÃO PAULO</div>
-          <div class="garden-end">Um dia para florescer juntos.</div></div></div>`
-      },
       {
         name:'Gran Reserva', type:'paper--wine', hint:'Clique para visualizar os detalhes',
         html: `<div class="paper paper--wine"><div class="wine-frame"></div>${floralLine('#c7a275')}
@@ -359,23 +349,6 @@
           <div class="blue-name">Clara</div><div class="blue-and">e</div><div class="blue-name second">Miguel</div>
           <div class="line blue-rule"></div><div class="eyebrow">Nosso casamento</div><div class="blue-date">09 / 10 / 2027</div>
           <div class="tiny blue-location">CERIMÔNIA ÀS 16H30<br>VILLA DAS FLORES · PARATY, RJ</div><div class="blue-closing">Celebre esse encontro conosco.</div></div></div>`
-      },
-      {
-        name:'Novo Clássico', type:'paper--modern', hint:'Clique para visualizar os detalhes',
-        html: `<div class="paper paper--modern"><div class="modern-spine"></div>${modernArc}
-          <div class="paper__content"><div class="modern-head">The wedding of / 2027</div><div class="modern-index">IV.</div>
-          <div class="modern-names">Beatriz<em>&amp;</em>Rafael</div>
-          <div class="serif italic" style="font-size:4.4cqw;margin-top:12%;max-width:65%;line-height:1.32">O capítulo mais bonito começa aqui.</div>
-          <div class="modern-line"></div><div class="modern-date"><div><strong>12.06</strong><span>2027 · SÁBADO<br>ÀS 16 HORAS</span></div><div><strong>RJ</strong><span>CASA DAS PALMEIRAS<br>RIO DE JANEIRO</span></div></div></div></div>`
-      },
-      {
-        name:'Rosa Antiga', type:'paper--blush', hint:'Clique para visualizar os detalhes',
-        html: `<div class="paper paper--blush"><div class="blush-border"></div><div class="blush-branch-a">${leafSprig('#b3918a','#eac9bb')}</div>
-          <div class="paper__content"><div class="blush-monogram">A • P</div><div class="eyebrow blush-tag">Juntos, para sempre</div>
-          <div class="blush-name">Alice</div><div class="blush-between">e</div><div class="blush-name second">Pedro</div>
-          <div class="line blush-rule"></div><div class="eyebrow">Convidam para celebrar o amor</div>
-          <div class="blush-date" style="margin-top:7%">02 DE OUTUBRO DE 2027</div><div class="tiny blush-location">ÀS 15H30 · ESPAÇO AURORA<br>CURITIBA, PR</div>
-          <div class="blush-footer">O melhor é estarmos juntos.</div></div></div>`
       },
       {
         name:'Convite Interativo', type:'paper--envelope', hint:'Toque no lacre dourado para abrir', envelope:true,
