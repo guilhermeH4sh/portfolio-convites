@@ -240,7 +240,6 @@
     .lightbox__card.is-gate {aspect-ratio:var(--gate-ratio, 2 / 3);}
     .lightbox__card .gate__door,.lightbox__card .gate__seal,.lightbox__card .gate__cover-text,.lightbox__card .gate__invite-hint,.lightbox__card .gate__open-actions{display:none}
     .lightbox__card .gate__qr {width:19%}
-    @media (prefers-reduced-motion:reduce) { .gate__door{transition-duration:.01ms} }
 
     /* 05 — Modal de zoom / foto completa do layout */
     .lightbox {position:fixed;inset:0;z-index:30;background:rgba(28,11,18,.91);backdrop-filter:blur(11px);-webkit-backdrop-filter:blur(11px);display:grid;place-items:center;opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s;padding:24px;}
@@ -277,10 +276,7 @@
       :root{--card-width:min(380px, 70vw, calc(72svh * .6667))}
       .stage{height:73svh;min-height:250px}
     }
-    @media (prefers-reduced-motion:reduce) {
-      *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important;}
-      .invite-shell,.nav,.foot,.micro-header{opacity:1;transform:none}
-    }
+
   </style>
 </head>
 <body>
@@ -445,7 +441,15 @@
         envelope.classList.toggle(invites[active].gate ? 'is-open' : 'open', action.dataset.action === 'open');
         return;
       }
-      if(!invites[active].envelope) openZoom();
+      if (invites[active].envelope) {
+        const envelope = shell.querySelector('[data-envelope]');
+        const isOpen = envelope.classList.contains(invites[active].gate ? 'is-open' : 'open');
+        if (!isOpen) {
+          envelope.classList.add(invites[active].gate ? 'is-open' : 'open');
+        }
+        return;
+      }
+      openZoom();
     });
     shell.addEventListener('keydown',e=>{
       if ((e.key==='Enter' || e.key===' ') && !invites[active].envelope) {e.preventDefault();openZoom();}
